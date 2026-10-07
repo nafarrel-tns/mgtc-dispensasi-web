@@ -6,5 +6,5 @@ window.CONFIG = {
   MAX: 10,
   // Batas akhir pengisian. Setelah lewat, form terkunci otomatis.
   // Kalau diubah, ubah juga DEADLINE di apps-script/Code.gs (server yang jadi penentu akhir).
-  DEADLINE: '2026-10-07T10:22:00+07:00'
+  DEADLINE: '2026-10-15T23:59:59+07:00'
 };
