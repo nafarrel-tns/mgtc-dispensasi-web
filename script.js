@@ -47,6 +47,7 @@
     if (!$('#success').hidden) return;
     // sembunyikan total form + ketentuan + pratinjau (semuanya ada di dalam #form), tampilkan kartu penutupan
     form.hidden = true;
+    document.body.classList.add('closed');
     $('#closedState').hidden = false;
     window.scrollTo({ top: 0 });
   }

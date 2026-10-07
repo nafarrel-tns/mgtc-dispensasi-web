@@ -64,7 +64,7 @@ i{font-style:normal}
 .closed-card{
   position:relative;max-width:620px;margin:0 auto;overflow:hidden;text-align:center;
   background:var(--forest);color:var(--paper);border:2px solid var(--forest);border-radius:18px;
-  box-shadow:6px 6px 0 var(--sun);padding:30px 24px 24px;
+  box-shadow:6px 6px 0 var(--sun);padding:32px 30px 28px;
   animation:closedIn .55s cubic-bezier(.2,.8,.3,1) both;
 }
 .closed-card::before{
@@ -80,9 +80,18 @@ i{font-style:normal}
 }
 .closed-badge svg{width:13px;height:13px;flex:none;color:var(--sun)}
 .closed-card h2{font:900 clamp(30px,7vw,44px)/.95 var(--display);text-transform:uppercase;margin-top:16px}
-.closed-desc{max-width:46ch;margin:12px auto 0;color:var(--sage-soft);font-size:14.5px}
-.closed-desc b{color:var(--sun);font-weight:700}
-.closed-box{margin-top:22px;background:var(--sun-soft);color:var(--ink);border-radius:12px;padding:16px 14px 16px}
+.closed-desc{max-width:40ch;margin:12px auto 0;color:var(--sage-soft);font-size:14.5px}
+.closed-desc b{color:var(--paper);font-weight:700}
+.closed-dates{
+  display:grid;grid-template-columns:1fr 1fr;max-width:440px;margin:18px auto 0;text-align:left;
+  border:1.5px solid rgba(232,185,49,.5);border-radius:10px;overflow:hidden;
+}
+.closed-dates div{padding:10px 14px 11px}
+.closed-dates div+div{border-left:1.5px dashed rgba(232,185,49,.5)}
+.closed-dates small{display:block;font:600 11.5px/1.3 var(--sans);color:var(--sage-soft)}
+.closed-dates strong{display:block;margin-top:2px;font:700 13.5px/1.35 var(--sans);color:var(--paper)}
+.closed-dates .hl strong{color:var(--sun)}
+.closed-box{margin-top:24px;background:var(--sun-soft);color:var(--ink);border-radius:12px;padding:16px 14px 16px}
 .cb-title{font:700 15px/1.3 var(--sans)}
 .cb-sub{font-size:13px;color:var(--ink-2);margin-top:3px}
 .wa-group{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
@@ -96,7 +105,17 @@ i{font-style:normal}
 .btn-wa small{display:block;font:500 12px/1.3 var(--sans);color:var(--sage-soft);margin-top:1px;font-variant-numeric:tabular-nums}
 .btn-wa:hover{background:var(--forest-2);transform:translate(-1px,-1px);box-shadow:4px 4px 0 rgba(29,58,41,.28)}
 .btn-wa:active{transform:translate(2px,2px);box-shadow:1px 1px 0 rgba(29,58,41,.28)}
-@media(max-width:480px){.closed-card{padding:26px 14px 18px;box-shadow:4px 4px 0 var(--sun)}.closed-icon{width:62px;height:62px}}
+@media(max-width:480px){
+  .closed-card{padding:26px 16px 18px;box-shadow:4px 4px 0 var(--sun)}
+  .closed-icon{width:62px;height:62px}
+  .closed-dates{grid-template-columns:1fr}
+  .closed-dates div+div{border-left:0;border-top:1.5px dashed rgba(232,185,49,.5)}
+}
+/* header jadi ringkas & rata tengah saat ditutup (info tanggal sudah ada di kartu) */
+body.closed .mast{text-align:center;padding:26px 0 20px}
+body.closed h1{font-size:clamp(34px,7vw,54px)}
+body.closed .event{justify-content:center;margin-top:10px}
+body.closed .lead,body.closed .ticket{display:none}
 
 /* masthead */
 .mast{padding:20px 0 24px}
