@@ -347,10 +347,18 @@
     form.hidden = true;
     $('#success').hidden = false;
     $('#demo').hidden = !demo;
+    clearInterval(cdTimer);
+    $('#deadline').hidden = true;
+    document.body.classList.add('sent');
     const r = $('#receipt');
     r.replaceChildren();
-    const b = document.createElement('b'); b.textContent = payload.nama;
-    r.append(b, ` (NPM ${payload.npm}), ${payload.jumlah} perkuliahan tercatat untuk Kamis, 29 Oktober 2026.`);
+    [['Nama', payload.nama], ['NPM', payload.npm], ['Perkuliahan', `${payload.jumlah} tercatat`]].forEach(([label, val]) => {
+      const cell = document.createElement('div');
+      const s = document.createElement('small'); s.textContent = label;
+      const st = document.createElement('strong'); st.textContent = val;
+      cell.append(s, st);
+      r.append(cell);
+    });
     const st = $('#stamp'); st.classList.remove('go'); void st.getBoundingClientRect(); st.classList.add('go');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }

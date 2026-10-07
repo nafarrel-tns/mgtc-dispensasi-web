@@ -112,10 +112,12 @@ i{font-style:normal}
   .closed-dates div+div{border-left:0;border-top:1.5px dashed rgba(232,185,49,.5)}
 }
 /* header jadi ringkas & rata tengah saat ditutup (info tanggal sudah ada di kartu) */
-body.closed .mast{text-align:center;padding:26px 0 20px}
-body.closed h1{font-size:clamp(34px,7vw,54px)}
-body.closed .event{justify-content:center;margin-top:10px}
-body.closed .lead,body.closed .ticket{display:none}
+body.closed .mast,body.sent .mast{text-align:center;padding:26px 0 20px}
+body.closed h1,body.sent h1{font-size:clamp(34px,7vw,54px)}
+body.closed .event,body.sent .event{justify-content:center;margin-top:10px}
+body.closed .lead,body.closed .ticket,body.sent .lead,body.sent .ticket{display:none}
+/* kontak panitia sudah ada sebagai tombol di kartu, footer tidak perlu lagi */
+body.closed footer,body.sent footer{display:none}
 
 /* masthead */
 .mast{padding:20px 0 24px}
@@ -286,13 +288,33 @@ footer a{color:var(--forest);font-weight:700;text-decoration:underline;text-unde
 footer a:hover{background:var(--sun-soft)}
 
 /* success */
-.success{max-width:560px;border-top:4px solid var(--forest);padding-top:22px}
-.stamp{display:block;width:min(100%,240px);color:var(--forest);rotate:-6deg;margin:2px 0 16px}
+.success{padding:6px 0 4px}
+.ok-card{
+  max-width:620px;margin:0 auto;text-align:center;
+  background:var(--sheet);border:2px solid var(--forest);border-radius:18px;box-shadow:6px 6px 0 var(--sun);
+  padding:28px 30px 26px;animation:closedIn .5s cubic-bezier(.2,.8,.3,1) both;
+}
+.stamp{display:block;width:min(100%,210px);color:var(--forest);rotate:-5deg;margin:0 auto 14px}
 .stamp.go{animation:thump .5s cubic-bezier(.2,.8,.3,1) both}
 @keyframes thump{0%{opacity:0;transform:scale(2.2) rotate(-12deg)}55%{opacity:1;transform:scale(.95)}100%{opacity:1;transform:none}}
 .success h2{font:900 clamp(30px,7vw,44px)/.95 var(--display);text-transform:uppercase;color:var(--forest)}
-.success p{margin-top:10px;font-size:15.5px;max-width:52ch}
-.receipt{margin-top:16px;background:var(--sheet);border:2px dashed var(--forest);border-radius:10px;padding:10px 14px;font-size:14px}
+.ok-lead{max-width:44ch;margin:10px auto 0;color:var(--ink-2);font-size:15px}
+.ok-lead b{color:var(--ink)}
+.ok-ticket{
+  display:grid;grid-template-columns:1.7fr 1.3fr .9fr;max-width:520px;margin:18px auto 0;text-align:left;
+  background:rgba(255,255,255,.55);border:2px solid var(--forest);border-radius:10px;overflow:hidden;
+}
+.ok-ticket div{padding:9px 14px 10px;min-width:0}
+.ok-ticket div+div{border-left:2px dashed rgba(29,58,41,.45)}
+.ok-ticket small{display:block;font:600 11.5px/1.3 var(--sans);color:var(--ink-2)}
+.ok-ticket strong{display:block;font:700 14px/1.3 var(--sans);overflow-wrap:anywhere}
+.ok-next{max-width:44ch;margin:16px auto 0;font-size:14.5px}
+.ok-thanks{margin-top:8px;font:800 15px/1.4 var(--sans);color:var(--forest)}
+@media(max-width:480px){
+  .ok-card{padding:22px 16px 18px;box-shadow:4px 4px 0 var(--sun)}
+  .ok-ticket{grid-template-columns:1fr}
+  .ok-ticket div+div{border-left:0;border-top:2px dashed rgba(29,58,41,.45)}
+}
 .demo{margin-top:14px;background:var(--sun-soft);border-left:6px solid var(--sun);padding:10px 14px;font-size:13px;border-radius:3px 8px 8px 3px}
 
 @media(prefers-reduced-motion:reduce){

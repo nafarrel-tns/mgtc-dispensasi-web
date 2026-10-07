@@ -177,6 +177,7 @@
   </form>
 
   <section class="success" id="success" hidden aria-live="polite">
+   <div class="ok-card">
     <svg class="stamp" id="stamp" viewBox="0 0 300 130" role="img" aria-label="Stempel terkirim">
       <defs>
         <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
@@ -192,11 +193,26 @@
       </g>
     </svg>
     <h2>Data Berhasil Dikirim!</h2>
-    <p>Data kamu untuk kebutuhan surat dispensasi <b>MIPA Goes to Company 2026</b> sudah berhasil diterima.</p>
-    <p>Silakan menunggu informasi selanjutnya terkait surat dispensasi melalui <b>announcement group</b>.</p>
-    <p><b>Thank you! See you on the journey! 🚀</b></p>
-    <div class="receipt" id="receipt"></div>
+    <p class="ok-lead">Data kamu untuk kebutuhan surat dispensasi <b>MIPA Goes to Company 2026</b> sudah berhasil diterima.</p>
+    <div class="ok-ticket" id="receipt"></div>
+    <p class="ok-next">Silakan menunggu informasi selanjutnya terkait surat dispensasi melalui <b>announcement group</b>.</p>
+    <p class="ok-thanks">Thank you! See you on the journey! 🚀</p>
+    <div class="closed-box ok-help">
+      <p class="cb-title">Ada kesalahan data setelah mengirim?</p>
+      <p class="cb-sub">Hubungi panitia melalui WhatsApp:</p>
+      <div class="wa-group">
+        <a class="btn-wa" href="https://wa.me/6287775157124?text=Halo%20Nafarrel,%20saya%20mau%20tanya/revisi%20data%20dispensasi%20MIPA%20Goes%20to%20Company" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.5-4.3A8.5 8.5 0 1 1 8.4 18.6L4 20z"/><g fill="currentColor" stroke="none"><circle cx="9" cy="12" r="1.1"/><circle cx="12.5" cy="12" r="1.1"/><circle cx="16" cy="12" r="1.1"/></g></svg>
+          <span>Chat Nafarrel<small>0877-7515-7124</small></span>
+        </a>
+        <a class="btn-wa" href="https://wa.me/6281317770610?text=Halo%20Cya,%20saya%20mau%20tanya/revisi%20data%20dispensasi%20MIPA%20Goes%20to%20Company" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.5-4.3A8.5 8.5 0 1 1 8.4 18.6L4 20z"/><g fill="currentColor" stroke="none"><circle cx="9" cy="12" r="1.1"/><circle cx="12.5" cy="12" r="1.1"/><circle cx="16" cy="12" r="1.1"/></g></svg>
+          <span>Chat Cya<small>0813-1777-0610</small></span>
+        </a>
+      </div>
+    </div>
     <div class="demo" id="demo" hidden><b>Mode uji coba.</b> Form belum tersambung ke Google Sheet, jadi data ini belum tersimpan di mana pun. Isi <code>ENDPOINT</code> di config.js untuk mulai mengumpulkan data.</div>
+   </div>
   </section>
 
   <footer>
