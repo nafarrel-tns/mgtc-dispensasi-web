@@ -223,7 +223,9 @@ select option{color:var(--ink)}
 .send:active:not(:disabled){transform:translate(3px,3px);box-shadow:1px 1px 0 var(--sun)}
 .send:disabled{opacity:.8;cursor:progress}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
-footer{margin-top:44px;padding-top:12px;border-top:2px solid rgba(29,58,41,.25);font-size:12.5px;color:var(--ink-2)}
+footer{margin-top:44px;padding-top:12px;border-top:2px solid rgba(29,58,41,.25);font-size:12.5px;line-height:1.7;color:var(--ink-2)}
+footer a{color:var(--forest);font-weight:700;text-decoration:underline;text-underline-offset:2px;white-space:nowrap}
+footer a:hover{background:var(--sun-soft)}
 
 /* success */
 .success{max-width:560px;border-top:4px solid var(--forest);padding-top:22px}

@@ -18,8 +18,24 @@
   fill($('#angkatan'), ANGKATAN);
 
   /* ---------- deadline + hitung mundur ---------- */
+  // DEADLINE memakai offset +07:00 (WIB) di string config, jadi ia adalah satu titik waktu absolut
+  // dan tidak bergantung zona waktu perangkat (WITA/WIT/luar negeri tetap menghitung ke 23.59 WIB).
   const DEADLINE = new Date(CONFIG.DEADLINE).getTime();
   const pad = n => String(n).padStart(2, '0');
+
+  // Jam perangkat bisa salah/diubah manual, jadi disinkronkan dengan header "Date" dari server hosting.
+  // Kalau gagal (misal dibuka dari file lokal), pakai jam perangkat. Server Apps Script tetap penentu akhir.
+  let skew = 0;
+  const now = () => Date.now() + skew;
+  async function syncClock() {
+    try {
+      const t0 = Date.now();
+      const res = await fetch(location.href.split('#')[0], { method: 'HEAD', cache: 'no-store' });
+      const t1 = Date.now();
+      const server = new Date(res.headers.get('date')).getTime();
+      if (!isNaN(server)) skew = server - (t0 + t1) / 2;
+    } catch (e) { /* abaikan */ }
+  }
 
   function lockForm() {
     if (closed) return;
@@ -35,7 +51,7 @@
   }
 
   function tick() {
-    const left = DEADLINE - Date.now();
+    const left = DEADLINE - now();
     if (left <= 0) { lockForm(); return; }
     const s = Math.floor(left / 1000);
     const d = Math.floor(s / 86400), h = Math.floor(s % 86400 / 3600), m = Math.floor(s % 3600 / 60), sec = s % 60;
@@ -50,6 +66,7 @@
   function startCountdown() {
     tick();
     if (!closed) cdTimer = setInterval(tick, 1000);
+    syncClock().then(tick); // koreksi begitu jam server didapat
   }
 
   /* ---------- aturan validasi ---------- */
@@ -82,11 +99,37 @@
   const touched = el => el.closest('.field').classList.contains('touched');
 
   /* ---------- kartu perkuliahan ---------- */
-  // placeholder + label bilah hijau mengikuti jenis perkuliahan yang dipilih
+  // teks kartu mengikuti jenis perkuliahan: '' (belum dipilih), 'Mata Kuliah', 'Praktikum'
+  const KIND = {
+    '': {
+      vert: 'Perkuliahan',
+      namaL: 'Nama Perkuliahan', namaP: 'Contoh: Basis Data / Praktikum Pemrograman', namaH: '',
+      dosenL: 'Dosen Pengampu / Pengajar', dosenP: 'Contoh: Dr. Nama Dosen, S.Si., M.Kom.', dosenH: 'Isi nama pengajar sesuai jadwal.'
+    },
+    'Mata Kuliah': {
+      vert: 'Mata Kuliah',
+      namaL: 'Nama Mata Kuliah', namaP: 'Contoh: Basis Data', namaH: 'Tulis sesuai nama resmi mata kuliah.',
+      dosenL: 'Dosen Pengampu', dosenP: 'Contoh: Dr. Nama Dosen, S.Si., M.Kom.', dosenH: 'Untuk mata kuliah, isi dosen pengampu sesuai jadwal.'
+    },
+    'Praktikum': {
+      vert: 'Praktikum',
+      namaL: 'Nama Praktikum', namaP: 'Contoh: Praktikum Pemrograman', namaH: 'Tulis sesuai nama resmi praktikum.',
+      dosenL: 'Dosen Pengampu / Asisten Praktikum', dosenP: 'Contoh: Dr. Nama Dosen / Nama Asisten',
+      dosenH: 'Untuk praktikum, isi salah satu saja: nama Dosen Pengampu ATAU Asisten Praktikum.'
+    }
+  };
+
   function setPlaceholder(card) {
-    const jenis = $('[data-name="jenis"]', card).value;
-    $('[data-name="nama"]', card).placeholder = jenis === 'Praktikum' ? 'Contoh: Praktikum Pemrograman' : 'Contoh: Basis Data';
-    $('.vert', card).textContent = jenis || 'Perkuliahan';
+    const k = KIND[$('[data-name="jenis"]', card).value] || KIND[''];
+    $('.vert', card).textContent = k.vert;
+    $('[data-t="namaL"]', card).textContent = k.namaL;
+    $('[data-name="nama"]', card).placeholder = k.namaP;
+    const hn = $('[data-t="namaH"]', card);
+    hn.textContent = k.namaH;
+    hn.hidden = !k.namaH;
+    $('[data-t="dosenL"]', card).textContent = k.dosenL;
+    $('[data-name="dosen"]', card).placeholder = k.dosenP;
+    $('[data-t="dosenH"]', card).textContent = k.dosenH;
   }
 
   function renumber() {
@@ -99,7 +142,7 @@
     const n = cards.length;
     addBtn.disabled = closed || n >= CONFIG.MAX;
     cap.classList.toggle('full', n >= CONFIG.MAX);
-    cap.textContent = n >= CONFIG.MAX ? `Maksimal ${CONFIG.MAX} perkuliahan dapat ditambahkan.` : `${n} dari maksimal ${CONFIG.MAX} perkuliahan.`;
+    cap.textContent = n >= CONFIG.MAX ? `Maksimal ${CONFIG.MAX} perkuliahan` : `${n} dari maksimal ${CONFIG.MAX} perkuliahan.`;
   }
 
   function addCourse(v = {}, focus = false) {
@@ -185,30 +228,24 @@
       const g = n => $(`[data-name="${n}"]`, s).value.trim();
       return { jenis: g('jenis'), nama: g('nama'), dosen: g('dosen'), m: g('mulai'), e: g('selesai') };
     });
-    // urutan: Mata Kuliah, lalu Praktikum, lalu yang jenisnya belum dipilih
-    const mk = items.filter(x => x.jenis === 'Mata Kuliah');
-    const pr = items.filter(x => x.jenis === 'Praktikum');
-    const un = items.filter(x => !x.jenis);
+    // urutan: Mata Kuliah, lalu Praktikum, lalu yang jenisnya belum dipilih (kelompok umum "Perkuliahan").
+    // Sub-judul hanya dibuat untuk kelompok yang punya minimal 1 item.
     const groups = [
-      { title: 'Mata Kuliah', list: mk },
-      { title: 'Praktikum', list: pr },
-      { title: 'Jenis belum dipilih', list: un }
+      { title: 'Mata Kuliah', list: items.filter(x => x.jenis === 'Mata Kuliah') },
+      { title: 'Praktikum', list: items.filter(x => x.jenis === 'Praktikum') },
+      { title: 'Perkuliahan', list: items.filter(x => !x.jenis) }
     ].filter(gr => gr.list.length);
-    // sub-judul kategori hanya muncul kalau ada Mata Kuliah DAN Praktikum sekaligus
-    const showTitles = mk.length > 0 && pr.length > 0;
     let count = 0;
     groups.forEach(gr => {
-      if (showTitles) {
-        const h = document.createElement('h5');
-        h.textContent = gr.title;
-        box.append(h);
-      }
+      const h = document.createElement('h5');
+      h.textContent = gr.title;
+      box.append(h);
       const ol = document.createElement('ol');
       ol.style.counterReset = 'c ' + count; // penomoran lanjut antar kelompok
       gr.list.forEach(x => {
         const li = document.createElement('li');
         const l1 = document.createElement('span');
-        l1.textContent = (x.nama || '..........') + (x.jenis ? ` (${x.jenis})` : '');
+        l1.textContent = x.nama || '..........';
         if (!x.nama) l1.className = 'empty';
         const l2 = document.createElement('span');
         l2.textContent = x.dosen || '..........';
@@ -319,7 +356,7 @@
   form.addEventListener('submit', async e => {
     e.preventDefault();
     if (sending) return;
-    if (closed || Date.now() >= DEADLINE) { lockForm(); return; }
+    if (closed || now() >= DEADLINE) { lockForm(); return; }
     hideBanner();
     const bad = validateAll();
     if (bad) {

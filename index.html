@@ -95,7 +95,7 @@
 
     <section class="sec" aria-labelledby="h-kuliah">
       <h2 id="h-kuliah">Data Perkuliahan</h2>
-      <p class="sec-desc">Masukkan <b>mata kuliah</b> atau <b>praktikum</b> yang memiliki jadwal pada Kamis, 29 Oktober 2026 dan akan kamu tinggalkan karena mengikuti MIPA Goes to Company 2026.</p>
+      <p class="sec-desc">Masukkan <b>mata kuliah</b> atau <b>praktikum</b> yang memiliki jadwal pada <b>Kamis, 29 Oktober 2026</b> dan akan kamu tinggalkan karena mengikuti MIPA Goes to Company 2026.</p>
       <div class="slips" id="slips"></div>
       <button type="button" class="add" id="addBtn"><span class="plus" aria-hidden="true">+</span> Tambah Perkuliahan</button>
       <p class="cap" id="cap"></p>
@@ -186,15 +186,15 @@
         <div class="err" aria-live="polite"></div>
       </div>
       <div class="field">
-        <label class="lbl" data-for="nama">Nama Mata Kuliah / Praktikum <i>*</i></label>
-        <div class="control txt"><input type="text" data-rule="text" data-name="nama" autocomplete="off" placeholder="Contoh: Basis Data"></div>
-        <div class="hint">Tulis sesuai nama resmi perkuliahan.</div>
+        <label class="lbl" data-for="nama"><span data-t="namaL">Nama Perkuliahan</span> <i>*</i></label>
+        <div class="control txt"><input type="text" data-rule="text" data-name="nama" autocomplete="off" placeholder="Contoh: Basis Data / Praktikum Pemrograman"></div>
+        <div class="hint" data-t="namaH" hidden></div>
         <div class="err" aria-live="polite"></div>
       </div>
       <div class="field">
-        <label class="lbl" data-for="dosen">Dosen Pengampu <i>*</i></label>
+        <label class="lbl" data-for="dosen"><span data-t="dosenL">Dosen Pengampu / Pengajar</span> <i>*</i></label>
         <div class="control txt"><input type="text" data-rule="text" data-name="dosen" autocomplete="off" placeholder="Contoh: Dr. Nama Dosen, S.Si., M.Kom."></div>
-        <div class="hint">Untuk praktikum, isi dosen pengampu sesuai jadwal.</div>
+        <div class="hint" data-t="dosenH">Isi nama pengajar sesuai jadwal.</div>
         <div class="err" aria-live="polite"></div>
       </div>
       <div>
