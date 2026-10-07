@@ -41,13 +41,14 @@
     if (closed) return;
     closed = true;
     clearInterval(cdTimer);
-    $('#dlTime').hidden = true;
-    $('#dlClosed').hidden = false;
-    $('#deadline').classList.add('is-closed');
-    $('#deadline').classList.remove('soon');
-    form.classList.add('is-closed');
+    $('#deadline').hidden = true;
     $$('input, select, button', form).forEach(el => { el.disabled = true; });
-    hideBanner();
+    // peserta yang sudah sukses kirim tetap melihat halaman suksesnya
+    if (!$('#success').hidden) return;
+    // sembunyikan total form + ketentuan + pratinjau (semuanya ada di dalam #form), tampilkan kartu penutupan
+    form.hidden = true;
+    $('#closedState').hidden = false;
+    window.scrollTo({ top: 0 });
   }
 
   function tick() {

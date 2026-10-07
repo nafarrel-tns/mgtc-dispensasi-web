@@ -29,7 +29,6 @@
         </div>
         <span class="sr-only" id="cdSr"></span>
       </div>
-      <p class="dl-closed" id="dlClosed" hidden>Pengisian Form Telah Ditutup</p>
     </div>
     <h1>Data Surat<br>Dispensasi</h1>
     <div class="event">
@@ -41,6 +40,42 @@
       <div><small>Waktu</small><strong>07.00 WIB – Selesai</strong></div>
     </div>
   </header>
+
+  <!-- TAMPILAN SETELAH DEADLINE: menggantikan seluruh form -->
+  <section class="closed-state" id="closedState" hidden aria-live="polite">
+    <div class="closed-card">
+      <svg class="closed-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="7" y="12" width="46" height="44" rx="7"/>
+        <path d="M7 25h46M19 7v10M41 7v10"/>
+        <g fill="currentColor" stroke="none"><circle cx="17" cy="35" r="2"/><circle cx="26" cy="35" r="2"/><circle cx="17" cy="45" r="2"/><circle cx="26" cy="45" r="2"/><circle cx="35" cy="35" r="2"/></g>
+        <rect x="34" y="38" width="24" height="19" rx="4.5" style="fill:var(--forest)"/>
+        <path d="M39 38v-5a7 7 0 0 1 14 0v5"/>
+        <path d="M46 46v4" stroke-width="3.4"/>
+      </svg>
+      <div class="closed-badge">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="7" width="10" height="7" rx="1.8"/><path d="M5.2 7V5.2a2.8 2.8 0 0 1 5.6 0V7"/></svg>
+        Pengisian Form Telah Ditutup
+      </div>
+      <h2>Terima Kasih Atas Antusiasmemu!</h2>
+      <p class="closed-desc">
+        Batas waktu pengisian form pendataan surat dispensasi <b>MIPA Goes to Company 2026</b> untuk jadwal <b>Kamis, 29 Oktober 2026</b> telah berakhir pada <b>Kamis, 15 Oktober 2026 pukul 23.59 WIB</b>.
+      </p>
+      <div class="closed-box">
+        <p class="cb-title">Terlambat mengisi atau butuh bantuan revisi data?</p>
+        <p class="cb-sub">Silakan hubungi panitia melalui WhatsApp:</p>
+        <div class="wa-group">
+          <a class="btn-wa" href="https://wa.me/6287775157124?text=Halo%20Nafarrel,%20saya%20terlambat/butuh%20bantuan%20form%20dispensasi%20MIPA%20Goes%20to%20Company" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.5-4.3A8.5 8.5 0 1 1 8.4 18.6L4 20z"/><g fill="currentColor" stroke="none"><circle cx="9" cy="12" r="1.1"/><circle cx="12.5" cy="12" r="1.1"/><circle cx="16" cy="12" r="1.1"/></g></svg>
+            <span>Chat Nafarrel<small>0877-7515-7124</small></span>
+          </a>
+          <a class="btn-wa" href="https://wa.me/6281317770610?text=Halo%20Cya,%20saya%20terlambat/butuh%20bantuan%20form%20dispensasi%20MIPA%20Goes%20to%20Company" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20l1.5-4.3A8.5 8.5 0 1 1 8.4 18.6L4 20z"/><g fill="currentColor" stroke="none"><circle cx="9" cy="12" r="1.1"/><circle cx="12.5" cy="12" r="1.1"/><circle cx="16" cy="12" r="1.1"/></g></svg>
+            <span>Chat Cya<small>0813-1777-0610</small></span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <form id="form" class="layout" novalidate autocomplete="on">
 
@@ -162,8 +197,8 @@
 
   <footer>
     Panitia MIPA Goes to Company 2026. Ada kesalahan data setelah mengirim? Hubungi panitia via WA: 
-    <a href="https://wa.me/6287775157124?text=Halo%20Nafarrel,%20saya%20mau%20tanya/revisi%20data%20dispensasi%20MIPA%20Goes%20to%20Company%202026" target="_blank" rel="noopener">Nafarrel (0877-7515-7124)</a> atau 
-    <a href="https://wa.me/6281317770610?text=Halo%20Cya,%20saya%20mau%20tanya/revisi%20data%20dispensasi%20MIPA%20Goes%20to%20Company%202026" target="_blank" rel="noopener">Cya (0813-1777-0610)</a>
+    <a href="https://wa.me/6287775157124?text=Halo%20Nafarrel,%20saya%20mau%20tanya/revisi%20data%20dispensasi%20MIPA%20Goes%20to%20Company" target="_blank" rel="noopener">Nafarrel (0877-7515-7124)</a> atau 
+    <a href="https://wa.me/6281317770610?text=Halo%20Cya,%20saya%20mau%20tanya/revisi%20data%20dispensasi%20MIPA%20Goes%20to%20Company" target="_blank" rel="noopener">Cya (0813-1777-0610)</a>
   </footer>
   
 </div>
