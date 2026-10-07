@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Data Surat Dispensasi | MIPA Goes to Company 2026</title>
+<meta name="description" content="Form pendataan peserta MIPA Goes to Company 2026 untuk kebutuhan surat dispensasi perkuliahan pada Kamis, 29 Oktober 2026.">
+<meta name="theme-color" content="#1D3A29">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%231D3A29'/%3E%3Cpath d='M18 33l10 10 19-23' fill='none' stroke='%23E8B931' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Courier+Prime:wght@400;700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="meter" aria-hidden="true"><i id="meter"></i></div>
+
+<div class="wrap">
+  <header class="mast">
+    <div class="deadline" id="deadline" role="timer">
+      <p class="dl-text">Batas akhir pengisian form:<b>Kamis, 15 Oktober 2026 pukul 23.59 WIB</b></p>
+      <div class="dl-time" id="dlTime">
+        <span class="dl-label">Sisa Waktu</span>
+        <div class="dl-clock" aria-hidden="true">
+          <div><b id="cdD">--</b><small>Hari</small></div><span>:</span>
+          <div><b id="cdH">--</b><small>Jam</small></div><span>:</span>
+          <div><b id="cdM">--</b><small>Menit</small></div><span>:</span>
+          <div><b id="cdS">--</b><small>Detik</small></div>
+        </div>
+        <span class="sr-only" id="cdSr"></span>
+      </div>
+      <p class="dl-closed" id="dlClosed" hidden>Pengisian Form Telah Ditutup</p>
+    </div>
+    <h1>Data Surat<br>Dispensasi</h1>
+    <div class="event">
+      <span>MIPA Goes to Company 2026</span>
+    </div>
+    <p class="lead">Form ini digunakan untuk pendataan peserta MIPA Goes to Company 2026 yang membutuhkan surat dispensasi perkuliahan pada <b>Kamis, 29 Oktober 2026</b>.</p>
+    <div class="ticket">
+      <div><small>Tanggal</small><strong>Kamis, 29 Oktober 2026</strong></div>
+      <div><small>Waktu</small><strong>07.00 WIB – Selesai</strong></div>
+    </div>
+  </header>
+
+  <form id="form" class="layout" novalidate autocomplete="on">
+
+    <aside class="note" aria-labelledby="noteT">
+      <h3 id="noteT">Ketentuan pengisian</h3>
+      <p>Mohon isi data dengan benar dan sesuai dengan data akademik masing-masing.</p>
+      <p>Data mata kuliah/praktikum yang dimasukkan adalah <b>perkuliahan yang memiliki jadwal pada Kamis, 29 Oktober 2026 dan akan ditinggalkan karena mengikuti MIPA Goes to Company 2026.</b></p>
+      <p>Jika memiliki lebih dari satu mata kuliah atau praktikum yang perlu didispensasi, gunakan tombol <b>“+ Tambah Perkuliahan”</b> untuk menambahkan data.</p>
+      <p>Pastikan seluruh data yang dimasukkan sudah benar sebelum melakukan pengiriman.</p>
+    </aside>
+
+    <section class="sec" aria-labelledby="h-peserta">
+      <h2 id="h-peserta">Data Peserta</h2>
+      <p class="sec-desc">Isi sesuai data akademikmu. Kolom bertanda <i style="color:var(--red)">*</i> wajib diisi.</p>
+      <div class="fields two">
+        <div class="field span2">
+          <label class="lbl" for="email">Email <i>*</i></label>
+          <div class="control txt"><input type="email" id="email" name="email" data-rule="email" inputmode="email" autocomplete="email" placeholder="Contoh: nama@student.unpad.ac.id"></div>
+          <div class="hint">Boleh email pribadi maupun email kampus.</div>
+          <div class="err" aria-live="polite"></div>
+        </div>
+        <div class="field span2">
+          <label class="lbl" for="nama">Nama Lengkap <i>*</i></label>
+          <div class="control txt"><input type="text" id="nama" name="nama" data-rule="nama" autocomplete="name" placeholder="Contoh: Nafarrel Rashya Tanusaputra"></div>
+          <div class="hint">Tulis sesuai identitas akademik.</div>
+          <div class="err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label class="lbl" for="npm">NPM <i>*</i></label>
+          <div class="control txt"><input type="text" id="npm" name="npm" data-rule="npm" data-digits inputmode="numeric" autocomplete="off" maxlength="20" placeholder="Contoh: 140810250013"></div>
+          <div class="hint">Hanya angka, tanpa spasi atau tanda baca.</div>
+          <div class="err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label class="lbl" for="wa">Nomor WhatsApp / HP <i>*</i></label>
+          <div class="control txt"><input type="text" id="wa" name="wa" data-rule="wa" data-digits inputmode="numeric" autocomplete="tel-national" maxlength="14" placeholder="Contoh: 081234567890"></div>
+          <div class="hint">Mulai dari 08. Tanpa +62, spasi, atau tanda hubung.</div>
+          <div class="err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label class="lbl" for="prodi">Program Studi <i>*</i></label>
+          <div class="control"><select id="prodi" name="prodi" data-rule="select" required><option value="">Pilih Program Studi</option></select></div>
+          <div class="err" aria-live="polite"></div>
+        </div>
+        <div class="field">
+          <label class="lbl" for="angkatan">Angkatan <i>*</i></label>
+          <div class="control"><select id="angkatan" name="angkatan" data-rule="select" required><option value="">Pilih Angkatan</option></select></div>
+          <div class="err" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" aria-labelledby="h-kuliah">
+      <h2 id="h-kuliah">Data Perkuliahan</h2>
+      <p class="sec-desc">Masukkan <b>mata kuliah</b> atau <b>praktikum</b> yang memiliki jadwal pada Kamis, 29 Oktober 2026 dan akan kamu tinggalkan karena mengikuti MIPA Goes to Company 2026.</p>
+      <div class="slips" id="slips"></div>
+      <button type="button" class="add" id="addBtn"><span class="plus" aria-hidden="true">+</span> Tambah Perkuliahan</button>
+      <p class="cap" id="cap"></p>
+      <p class="cap">Jika kamu memiliki lebih dari satu perkuliahan yang perlu didispensasi, klik “+ Tambah Perkuliahan”.</p>
+    </section>
+
+    <aside class="draft" aria-label="Pratinjau draft lampiran surat">
+      <div class="paper">
+        <h3>Lampiran Surat Dispensasi</h3>
+        <p class="sub">MIPA Goes to Company 2026<br>Kamis, 29 Oktober 2026</p>
+        <dl>
+          <dt>Nama</dt><dd data-pv="nama"></dd>
+          <dt>NPM</dt><dd data-pv="npm"></dd>
+          <dt>Prodi</dt><dd data-pv="prodi"></dd>
+          <dt>Angkatan</dt><dd data-pv="angkatan"></dd>
+        </dl>
+        <h4>Perkuliahan yang ditinggalkan:</h4>
+        <div id="pvCourses"></div>
+        <div class="pv-foot">Kelengkapan form: <span id="pvPct">0%</span>
+          <div class="pv-bar"><i id="pvBar"></i></div>
+        </div>
+      </div>
+      <p class="draft-note">Pratinjau untuk cek ulang isianmu. Berubah otomatis saat kamu mengetik.</p>
+    </aside>
+
+    <section class="sec" aria-labelledby="h-konf">
+      <h2 id="h-konf">Konfirmasi Data</h2>
+      <div class="field" id="fConfirm" style="margin-top:14px">
+        <label class="check">
+          <input type="checkbox" id="confirm">
+          <span class="box" aria-hidden="true"></span>
+          <span>Saya memastikan bahwa seluruh data yang saya isi sudah benar dan sesuai dengan data akademik serta jadwal perkuliahan saya pada <b>Kamis, 29 Oktober 2026</b>.</span>
+        </label>
+        <div class="err" aria-live="polite">Silakan konfirmasi data sebelum mengirim form.</div>
+      </div>
+      <input type="text" name="website" id="hp" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="banner" id="banner" role="alert" hidden></div>
+      <button type="submit" class="send" id="send"><span>Kirim Data</span></button>
+    </section>
+  </form>
+
+  <section class="success" id="success" hidden aria-live="polite">
+    <svg class="stamp" id="stamp" viewBox="0 0 300 130" role="img" aria-label="Stempel terkirim">
+      <defs>
+        <filter id="rough" x="-5%" y="-5%" width="110%" height="110%">
+          <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="3" seed="4" result="n"/>
+          <feDisplacementMap in="SourceGraphic" in2="n" scale="3.5"/>
+        </filter>
+      </defs>
+      <g filter="url(#rough)" fill="none" stroke="currentColor">
+        <rect x="6" y="6" width="288" height="118" rx="12" stroke-width="6"/>
+        <rect x="17" y="17" width="266" height="96" rx="6" stroke-width="2"/>
+        <text x="150" y="76" text-anchor="middle" font-family="'Big Shoulders Display',Impact,sans-serif" font-weight="900" font-size="62" letter-spacing="3" fill="currentColor" stroke="none">TERKIRIM</text>
+        <text x="150" y="101" text-anchor="middle" font-family="'Courier Prime',monospace" font-weight="700" font-size="13" letter-spacing="2" fill="currentColor" stroke="none">MIPA GOES TO COMPANY 2026</text>
+      </g>
+    </svg>
+    <h2>Data Berhasil Dikirim!</h2>
+    <p>Data kamu untuk kebutuhan surat dispensasi <b>MIPA Goes to Company 2026</b> sudah berhasil diterima.</p>
+    <p>Silakan menunggu informasi selanjutnya terkait surat dispensasi melalui <b>announcement group</b>.</p>
+    <p><b>Thank you! See you on the journey! 🚀</b></p>
+    <div class="receipt" id="receipt"></div>
+    <div class="demo" id="demo" hidden><b>Mode uji coba.</b> Form belum tersambung ke Google Sheet, jadi data ini belum tersimpan di mana pun. Isi <code>ENDPOINT</code> di config.js untuk mulai mengumpulkan data.</div>
+  </section>
+
+  <footer>Panitia MIPA Goes to Company 2026. Ada kesalahan data setelah mengirim? Hubungi panitia.</footer>
+</div>
+
+<template id="tplSlip">
+  <article class="slip">
+    <div class="stub">
+      <span class="n">1</span>
+      <span class="vert">Perkuliahan</span>
+      <button type="button" class="del" hidden>Hapus</button>
+    </div>
+    <div class="slip-body fields">
+      <div class="field">
+        <label class="lbl" data-for="jenis">Jenis Perkuliahan <i>*</i></label>
+        <div class="control"><select data-rule="select" data-name="jenis" required>
+          <option value="">Pilih jenis perkuliahan</option>
+          <option value="Mata Kuliah">Mata Kuliah</option>
+          <option value="Praktikum">Praktikum</option>
+        </select></div>
+        <div class="err" aria-live="polite"></div>
+      </div>
+      <div class="field">
+        <label class="lbl" data-for="nama">Nama Mata Kuliah / Praktikum <i>*</i></label>
+        <div class="control txt"><input type="text" data-rule="text" data-name="nama" autocomplete="off" placeholder="Contoh: Basis Data"></div>
+        <div class="hint">Tulis sesuai nama resmi perkuliahan.</div>
+        <div class="err" aria-live="polite"></div>
+      </div>
+      <div class="field">
+        <label class="lbl" data-for="dosen">Dosen Pengampu <i>*</i></label>
+        <div class="control txt"><input type="text" data-rule="text" data-name="dosen" autocomplete="off" placeholder="Contoh: Dr. Nama Dosen, S.Si., M.Kom."></div>
+        <div class="hint">Untuk praktikum, isi dosen pengampu sesuai jadwal.</div>
+        <div class="err" aria-live="polite"></div>
+      </div>
+      <div>
+        <div class="lbl">Waktu Perkuliahan <i>*</i></div>
+        <div class="time-row">
+          <div class="field">
+            <label class="mini" data-for="mulai">Mulai</label>
+            <div class="control"><input type="time" data-rule="mulai" data-name="mulai"></div>
+            <div class="err" aria-live="polite"></div>
+          </div>
+          <span class="dash" aria-hidden="true">–</span>
+          <div class="field">
+            <label class="mini" data-for="selesai">Selesai</label>
+            <div class="control"><input type="time" data-rule="selesai" data-name="selesai"></div>
+            <div class="err" aria-live="polite"></div>
+          </div>
+        </div>
+        <div class="hint">Sesuai jadwal pada Kamis, 29 Oktober 2026. Contoh: 08.00 – 09.40 WIB</div>
+      </div>
+    </div>
+  </article>
+</template>
+
+<script src="config.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
